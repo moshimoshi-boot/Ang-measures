@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { HeaderService } from './header.service'
 
 @Component({
     selector: 'header-root',
@@ -7,9 +8,29 @@ import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
     styleUrls: ['./header.component.css', '../myApp.component.css']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+    
+    public characters;
+
+    constructor(
+      private headerService: HeaderService,
+    ){}
+
     @ViewChild("appMenu") trigger: MatMenuTrigger;
     @ViewChild("matMenu") menu: MatMenu;
+
+    ngOnInit(): void {
+      this.getCharactersMenu();
+    }
+
+    private getCharactersMenu(): void {
+      this.headerService.getCharacters()
+      .subscribe(characters => this.characters = characters);
+      var data = this.headerService.getCharacters();
+      var json = JSON.stringify(data);
+      console.log(data);
+      console.log(json);
+    }
 
     clickMenu() {
       this.trigger.openMenu();

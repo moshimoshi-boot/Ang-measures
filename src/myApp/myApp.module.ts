@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { MyAppComponent } from './myApp.component';
 import { HeaderComponent } from './Menu/header.componemt';
+import { HeaderService } from './Menu/header.service'
 
 @NgModule({
   declarations: [
@@ -16,9 +19,13 @@ import { HeaderComponent } from './Menu/header.componemt';
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [
+    HeaderService
+  ],
   bootstrap: [
     MyAppComponent
   ]

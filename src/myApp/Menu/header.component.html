@@ -4,8 +4,9 @@
             <mat-icon>character</mat-icon>
         </button>
         <mat-menu #appMenu="matMenu">
-            <button mat-menu-item>Settings</button>
-            <button mat-menu-item>Help</button>
+            <ng-container *ngFor="let character of characters">
+                <button mat-menu-item>{{character.name}}</button>
+            </ng-container>
         </mat-menu>
     </mat-toolbar-row>
 </mat-toolbar>
