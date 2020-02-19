@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header.componemt';
-import { HeaderService } from './header.service'
+import { HeaderService } from '../Service/note.service'
 
 @NgModule({
   declarations: [

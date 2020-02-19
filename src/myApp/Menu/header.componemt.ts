@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
-import { HeaderService } from './header.service'
+import { HeaderService } from '../Service/note.service'
 
 @Component({
     selector: 'header-root',
@@ -34,5 +34,9 @@ export class HeaderComponent implements OnInit {
 
     clickMenu() {
       this.trigger.openMenu();
+    }
+
+    onSelect(character) {
+      alert(this.headerService.getNotes(character.id));
     }
 }

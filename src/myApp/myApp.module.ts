@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { MyAppComponent } from './myApp.component';
 import { HeaderComponent } from './Menu/header.componemt';
-import { HeaderService } from './Menu/header.service'
+import { HeaderService } from './Service/note.service'
 
 @NgModule({
   declarations: [

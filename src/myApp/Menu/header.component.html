@@ -5,7 +5,9 @@
         </button>
         <mat-menu #appMenu="matMenu">
             <ng-container *ngFor="let character of characters">
-                <button mat-menu-item>{{character.name}}</button>
+                <button mat-menu-item (click)="onSelect(character)">
+                    {{character.name}}
+                </button>
             </ng-container>
         </mat-menu>
     </mat-toolbar-row>
