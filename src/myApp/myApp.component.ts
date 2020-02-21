@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class MyAppComponent {
   title = 'Ang-measures';
+  public selectedCharacterId;
+
+  /** 
+   * headerの子コンポーネントからキャラクターIDを受け取る
+  */
+  onReceiveEventFromChild(characterId) {
+    this.selectedCharacterId = characterId;
+  }
 }

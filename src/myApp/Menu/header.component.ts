@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, OnInit, ContentChild, Output, EventEmitter } from '@angular/core';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
-import { HeaderService } from '../Service/note.service'
+import { NoteService } from '../Service/note.service'
 
 @Component({
     selector: 'header-root',
@@ -13,30 +13,33 @@ export class HeaderComponent implements OnInit {
     public characters;
 
     constructor(
-      private headerService: HeaderService,
+      private noteService: NoteService,
     ){}
 
     @ViewChild("appMenu") trigger: MatMenuTrigger;
     @ViewChild("matMenu") menu: MatMenu;
-
+    @Output() event = new EventEmitter<string>();
+  
+    /** 
+    * 初期表示
+    */
     ngOnInit(): void {
       this.getCharactersMenu();
     }
 
     private getCharactersMenu(): void {
-      this.headerService.getCharacters()
+      this.noteService.getCharacters()
       .subscribe(characters => this.characters = characters);
-      var data = this.headerService.getCharacters();
-      var json = JSON.stringify(data);
-      console.log(data);
-      console.log(json);
     }
 
     clickMenu() {
       this.trigger.openMenu();
     }
 
+    /** 
+    * メニュー選択時 親コンポーネントにキャラクターIDを渡す
+    */
     onSelect(character) {
-      alert(this.headerService.getNotes(character.id));
+      this.event.emit(character.id);
     }
 }

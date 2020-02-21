@@ -1,12 +1,12 @@
 <div class="notesWrapper">
   <div class="notesHeader">
-    <header-root></header-root>
+    <header-root (event)="onReceiveEventFromChild($event)"></header-root>
   </div>
   <div class="notesBody">
-    BODY!
+    <note-root [selectedCharacterIdChild]='selectedCharacterId'></note-root>
   </div>
   <div class="notesFooter">
-    FOOTER!
+    {{selectedCharacterId}}
   </div>
 </div>
 
