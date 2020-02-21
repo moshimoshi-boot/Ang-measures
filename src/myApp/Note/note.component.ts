@@ -10,6 +10,7 @@ export class NoteComponent implements OnInit {
 
   public notes;
   @Input() selectedCharacterIdChild;
+  @Input() newNoteObjectChild;
 
   constructor(
     private noteService: NoteService,
@@ -24,7 +25,8 @@ export class NoteComponent implements OnInit {
    * 初期表示
   */
   private getNotesInit(): void {
-    this.noteService.getNotes("00001")
+    this.selectedCharacterIdChild = "00001";
+    this.noteService.getNotes(this.selectedCharacterIdChild)
     .subscribe(notes => this.notes = notes);
   }
 
@@ -43,6 +45,19 @@ export class NoteComponent implements OnInit {
   redrawNotes(): void {
     this.noteService.getNotes(this.selectedCharacterIdChild)
     .subscribe(notes => this.notes = notes);
+    this.changeDetectorRef.detectChanges();
+  }
+
+  @Input('newNoteObjectChild')
+  set updateNote(externalVal) {
+    this.newNoteObjectChild = externalVal;
+    const newNote = {
+      noteId: "",
+      noteContent: externalVal.noteContent,
+      gameTypeId: "G00001",
+      characterId: this.selectedCharacterIdChild
+    };
+    this.notes.push(newNote);
     this.changeDetectorRef.detectChanges();
   }
 

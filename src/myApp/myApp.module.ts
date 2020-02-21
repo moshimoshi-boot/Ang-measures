@@ -5,10 +5,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MyAppComponent } from './myApp.component';
 import { NoteComponent } from './Note/note.component';
 import { HeaderComponent } from './Menu/header.component';
+import { NoteFormEditorComponent } from './note-form-editor/note-form-editor.component';
 import { NoteService } from './Service/note.service'
 
 @NgModule({
@@ -16,6 +18,7 @@ import { NoteService } from './Service/note.service'
     MyAppComponent,
     NoteComponent,
     HeaderComponent,
+    NoteFormEditorComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -24,7 +27,8 @@ import { NoteService } from './Service/note.service'
     MatToolbarModule,
     MatMenuModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [
     NoteService

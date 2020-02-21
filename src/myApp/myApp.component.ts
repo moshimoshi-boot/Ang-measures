@@ -8,11 +8,16 @@ import { Component } from '@angular/core';
 export class MyAppComponent {
   title = 'Ang-measures';
   public selectedCharacterId;
+  public newNoteObject;
 
   /** 
    * headerの子コンポーネントからキャラクターIDを受け取る
   */
-  onReceiveEventFromChild(characterId) {
+  onReceiveCharacterId(characterId) {
     this.selectedCharacterId = characterId;
+  }
+
+  onReceiveNewNote(note){
+    this.newNoteObject = note;
   }
 }

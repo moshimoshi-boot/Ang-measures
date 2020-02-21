@@ -1,12 +1,15 @@
 <div class="notesWrapper">
   <div class="notesHeader">
-    <header-root (event)="onReceiveEventFromChild($event)"></header-root>
+    <header-root (event)="onReceiveCharacterId($event)"></header-root>
   </div>
   <div class="notesBody">
-    <note-root [selectedCharacterIdChild]='selectedCharacterId'></note-root>
+    <note-root 
+      [selectedCharacterIdChild]='selectedCharacterId'
+      [newNoteObjectChild]="newNoteObject"
+    ></note-root>
   </div>
   <div class="notesFooter">
-    {{selectedCharacterId}}
+    <app-note-form-editor (event)="onReceiveNewNote($event)"></app-note-form-editor>
   </div>
 </div>
 
